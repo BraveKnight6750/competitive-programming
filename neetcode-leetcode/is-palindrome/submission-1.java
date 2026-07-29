@@ -11,31 +11,29 @@ class Solution {
 
   /*
    * Solution:
-   * A two pointer approach, checking if both left and right are pointing to an
-   * Alphanumeric,
-   * if they are then comparing them, else incrementing/decrementing whichever one
-   * isn't pointing to an Alphanumeric
+   * Make an ArrayList holding only the alphanumeric characters in s, then for
+   * each character in the ArrayList,
+   * check if it is equal to the character equidistant from the end that it is
+   * from the beginning
    *
    * Time Complexity:
-   * O(n) because it only visits each letter of the string once
+   * O(n + n/2) which is just O(n), the n comes from iterating through the string
+   * to filter for each character,
+   * n/2 to iterate through half the ArrayList to check if the characters match
    */
   public boolean isPalindrome(String s) {
-    int left = 0;
-    int right = s.length() - 1;
-    while (left < right) {
-      char leftChar = s.charAt(left);
-      char rightChar = s.charAt(right);
+    s = s.toLowerCase();
+    char orig[] = s.toCharArray();
+    ArrayList<Character> ar = new ArrayList<>();
+    for (char c : orig) {
+      if (("" + c).matches("^[a-zA-Z0-9]+$")) {
+        ar.add(c);
+      }
+    }
 
-      if (!Character.isLetterOrDigit(leftChar)) {
-        left++;
-      } else if (!Character.isLetterOrDigit(rightChar)) {
-        right--;
-      } else {
-        if (Character.toLowerCase(leftChar) != Character.toLowerCase(rightChar)) {
-          return false;
-        }
-        left++;
-        right--;
+    for (int i = 0; i < ar.size() / 2; i++) {
+      if (ar.get(i) != ar.get(ar.size() - i - 1)) {
+        return false;
       }
     }
     return true;

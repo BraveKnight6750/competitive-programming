@@ -15,23 +15,28 @@ class Solution {
    * Alphanumeric,
    * if they are then comparing them, else incrementing/decrementing whichever one
    * isn't pointing to an Alphanumeric
+   * Similar to submission-2, but uses an array instead of using s.charAt,
+   * slightly faster but uses more space,
+   * and has the same time complexity anyways
    *
    * Time Complexity:
    * O(n) because it only visits each letter of the string once
    */
   public boolean isPalindrome(String s) {
+    s = s.toLowerCase();
+    char[] ar = s.toCharArray();
     int left = 0;
-    int right = s.length() - 1;
+    int right = ar.length - 1;
     while (left < right) {
-      char leftChar = s.charAt(left);
-      char rightChar = s.charAt(right);
+      char leftChar = ar[left];
+      char rightChar = ar[right];
 
       if (!Character.isLetterOrDigit(leftChar)) {
         left++;
       } else if (!Character.isLetterOrDigit(rightChar)) {
         right--;
       } else {
-        if (Character.toLowerCase(leftChar) != Character.toLowerCase(rightChar)) {
+        if (leftChar != rightChar) {
           return false;
         }
         left++;

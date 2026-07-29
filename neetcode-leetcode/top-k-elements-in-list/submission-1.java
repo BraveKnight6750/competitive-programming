@@ -2,8 +2,11 @@ class Solution {
   public int[] topKFrequent(int[] nums, int k) {
     HashMap<Integer, Integer> frequency = new HashMap<>();
     for (int i : nums) {
+      if (!frequency.containsKey(i)) {
+        frequency.put(i, 0);
+      }
 
-      frequency.put(i, frequency.getOrDefault(i, 0) + 1);
+      frequency.put(i, frequency.get(i) + 1);
     }
     int[] sol = new int[k];
     for (int i = 0; i < k; i++) {
