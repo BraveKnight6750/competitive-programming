@@ -1,3 +1,5 @@
+import java.util.*;
+
 class Solution {
   /*
    * Given two strings s and t, return true if the two strings are anagrams of
@@ -20,7 +22,7 @@ class Solution {
    * because it runs a sort for both which is n * log(n) for each added up
    */
   public boolean isAnagram(String s, String t) {
-    if (s.length() != t.length) {
+    if (s.length() != t.length()) {
       return false;
     }
 

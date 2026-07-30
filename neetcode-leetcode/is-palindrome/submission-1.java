@@ -1,3 +1,5 @@
+import java.util.*;
+
 class Solution {
   /*
    * Given a string s, return true if it is a palindrome, otherwise return false.

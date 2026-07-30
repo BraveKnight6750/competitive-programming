@@ -1,3 +1,5 @@
+import java.util.*;
+
 class Solution {
   public boolean isValidSudoku(char[][] board) {
     return checkRowsAndCols(board) && checkBoxes(board);
